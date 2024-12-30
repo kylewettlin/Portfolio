@@ -2,8 +2,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'JetBrains Mono', monospace;
-    background-color: #0F0606;
-    color: #fff;
+    background-color: #E0CBA8;
+    color: #191919;
 }
 
 .container {
@@ -18,7 +18,7 @@ body {
 
 h2 {
     font-size: 1.8rem;
-    color: #fff;
+    color: #191919;
     margin-top: 0.5rem;
     font-weight: 300;
     letter-spacing: 1px;
@@ -33,9 +33,9 @@ h2 {
 }
 
 .name-container span {
-    color: #650000;
+    color: #9A031E;
     font-weight: 600;
-    text-shadow: 0 0 10px rgba(101, 0, 0, 0.3);
+    text-shadow: 0 0 10px rgba(154, 3, 30, 0.2);
 }
 
 .social-links {
@@ -92,8 +92,8 @@ h2 {
     height: 280px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #EF233C;
-    box-shadow: 0 0 20px rgba(239, 35, 60, 0.2);
+    border: 3px solid #9A031E;
+    box-shadow: 0 0 20px rgba(154, 3, 30, 0.2);
 }
 
 /* Make it responsive */
@@ -132,7 +132,7 @@ h2 {
 
 .section-title {
     font-size: 2.5rem;
-    color: #fff;
+    color: #191919;
     margin-bottom: 3rem;
     text-align: center;
 }
@@ -146,24 +146,25 @@ h2 {
 }
 
 .project-card {
-    background: #200B0B;
+    background: #191919;
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     max-width: 975px;
     margin: 0 auto;
+    box-shadow: 0 2px 10px rgba(25, 25, 25, 0.2);
 }
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(73, 0, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(15, 6, 6, 0.2);
 }
 
 .project-image {
     width: 100%;
     aspect-ratio: 16/9;
     object-fit: contain;
-    background: #f5f5f5;
+    background: #6C6F7F;
     padding: 1.625rem;
     box-sizing: border-box;
 }
@@ -192,7 +193,7 @@ h2 {
 }
 
 .tech-tag {
-    background: #490000;
+    background: #E36414;
     color: #fff;
     padding: 0.3rem 0.8rem;
     border-radius: 15px;
@@ -205,7 +206,7 @@ h2 {
 }
 
 .project-link {
-    color: #650000;
+    color: #E36414;
     text-decoration: none;
     font-size: 0.9rem;
     transition: color 0.2s ease;
@@ -241,10 +242,10 @@ h2 {
 }
 
 .skill-category {
-    background: #200B0B;
+    background: #191919;
     padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(15, 6, 6, 0.3);
+    box-shadow: 0 2px 10px rgba(25, 25, 25, 0.2);
     transition: transform 0.3s ease;
 }
 
@@ -265,7 +266,7 @@ h2 {
 }
 
 .skill-tag {
-    background: #490000;
+    background: #E36414;
     color: #fff;
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -274,7 +275,7 @@ h2 {
 }
 
 .skill-tag:hover {
-    background: #650000;
+    background: #9A031E;
     color: #fff;
     transform: translateY(-2px);
 }
@@ -298,10 +299,10 @@ h2 {
 }
 
 .contact-container {
-    background: #200B0B;
+    background: #191919;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(25, 25, 25, 0.2);
 }
 
 .contact-form {
@@ -324,9 +325,9 @@ h2 {
 .form-group input,
 .form-group textarea {
     padding: 0.8rem;
-    border: 1px solid #490000;
+    border: 1px solid #E36414;
     border-radius: 4px;
-    background: #2F0000;
+    background: #6C6F7F;
     color: #fff;
     font-family: 'JetBrains Mono', monospace;
     transition: all 0.3s ease;
@@ -335,12 +336,12 @@ h2 {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #650000;
-    box-shadow: 0 0 0 2px rgba(101, 0, 0, 0.2);
+    border-color: #E36414;
+    box-shadow: 0 0 0 2px rgba(227, 100, 20, 0.2);
 }
 
 .submit-btn {
-    background: #650000;
+    background: #E36414;
     color: #fff;
     padding: 1rem 2rem;
     border: none;
@@ -352,7 +353,7 @@ h2 {
 }
 
 .submit-btn:hover {
-    background: #490000;
+    background: #9A031E;
     transform: translateY(-2px);
 }
 
@@ -368,7 +369,7 @@ h2 {
 } 
 
 .success-message {
-    color: #650000;
+    color: #9A031E;
     text-align: center;
     padding: 1rem;
     font-size: 1.1rem;
