@@ -65,7 +65,7 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 0 2rem;
     gap: 4rem;
@@ -79,7 +79,7 @@ h2 {
     font-size: 1.1rem;
     line-height: 1.6;
     margin: 1.5rem 0;
-    color: #fff;
+    color: #191919;
     max-width: 600px;
 }
 
@@ -126,7 +126,7 @@ h2 {
 /* Projects Section */
 .projects {
     padding: 4rem 2rem;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
 }
 
@@ -139,9 +139,9 @@ h2 {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 2rem;
-    max-width: 1300px;
+    max-width: 1600px;
     margin: 0 auto;
 }
 
@@ -165,7 +165,7 @@ h2 {
     aspect-ratio: 16/9;
     object-fit: contain;
     background: #6C6F7F;
-    padding: 1.625rem;
+    padding: 0.5rem;
     box-sizing: border-box;
 }
 
@@ -231,13 +231,13 @@ h2 {
 /* Skills Section */
 .skills {
     padding: 4rem 2rem;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
 }
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 2rem;
 }
 
@@ -294,7 +294,7 @@ h2 {
 /* Contact Section */
 .contact {
     padding: 4rem 2rem;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -460,4 +460,19 @@ h2 {
     .form-group textarea {
         font-size: 16px;
     }
+} 
+
+/* Additional breakpoint for medium-sized screens */
+@media (max-width: 1200px) {
+    .project-grid, .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+} 
+
+/* Add a special class for pixel art images */
+.project-image.pixel-art {
+    image-rendering: pixelated;  /* Modern browsers */
+    image-rendering: -moz-crisp-edges;  /* Firefox */
+    image-rendering: crisp-edges;  /* Safari */
+    object-fit: contain;  /* Ensure the whole image is visible */
 } 
