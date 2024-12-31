@@ -193,7 +193,7 @@ h2 {
 }
 
 .tech-tag {
-    background: #E36414;
+    background: #9A031E;
     color: #fff;
     padding: 0.3rem 0.8rem;
     border-radius: 15px;
@@ -266,7 +266,7 @@ h2 {
 }
 
 .skill-tag {
-    background: #E36414;
+    background: #9A031E;
     color: #fff;
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -275,7 +275,7 @@ h2 {
 }
 
 .skill-tag:hover {
-    background: #9A031E;
+    background: #6C6F7F;
     color: #fff;
     transform: translateY(-2px);
 }
@@ -325,7 +325,7 @@ h2 {
 .form-group input,
 .form-group textarea {
     padding: 0.8rem;
-    border: 1px solid #E36414;
+    border: 1px solid #9A031E;
     border-radius: 4px;
     background: #6C6F7F;
     color: #fff;
@@ -336,12 +336,12 @@ h2 {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #E36414;
-    box-shadow: 0 0 0 2px rgba(227, 100, 20, 0.2);
+    border-color: #9A031E;
+    box-shadow: 0 0 0 2px rgba(154, 3, 30, 0.2);
 }
 
 .submit-btn {
-    background: #E36414;
+    background: #9A031E;
     color: #fff;
     padding: 1rem 2rem;
     border: none;
@@ -353,7 +353,7 @@ h2 {
 }
 
 .submit-btn:hover {
-    background: #9A031E;
+    background: #6C6F7F;
     transform: translateY(-2px);
 }
 
