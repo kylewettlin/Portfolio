@@ -104,6 +104,16 @@ h2 {
         padding-top: 2rem;
     }
 
+    .name-container {
+        justify-content: center;
+        width: 100%;
+    }
+
+    h2 {
+        text-align: center;
+        width: 100%;
+    }
+
     .hero-image {
         margin-bottom: 2rem;
     }
