@@ -1,0 +1,300 @@
+:root {
+    --bg-color: #E0CBA8;
+    --text-color: #191919;
+    --accent-color: #9A031E;
+    --secondary-color: #6C6F7F;
+    --card-bg: #191919;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'JetBrains Mono', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+header {
+    background-color: var(--card-bg);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+nav {
+    margin-top: 1rem;
+}
+
+.nav-btn {
+    background: none;
+    border: 2px solid var(--accent-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.3s ease;
+}
+
+.nav-btn.active, .nav-btn:hover {
+    background-color: var(--accent-color);
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.puzzle-section {
+    display: none;
+}
+
+.puzzle-section.active {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.input-section {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+select, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--secondary-color);
+    border: 1px solid var(--accent-color);
+    color: white;
+    border-radius: 4px;
+}
+
+.generate-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.generate-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.preview-section {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    color: white;
+}
+
+#puzzle-preview {
+    display: grid;
+    gap: 2px;
+    margin-bottom: 1rem;
+}
+
+.puzzle-cell {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary-color);
+    font-weight: bold;
+    user-select: none;
+    cursor: pointer;
+}
+
+.puzzle-cell.selected {
+    background-color: var(--accent-color) !important;
+    color: white;
+}
+
+.puzzle-cell.found {
+    background-color: #E36414 !important;
+    color: white;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.action-buttons button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.action-buttons button:hover {
+    background-color: var(--secondary-color);
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .puzzle-section.active {
+        grid-template-columns: 1fr !important;
+    }
+
+    .input-section {
+        margin-bottom: 1rem;
+    }
+
+    .puzzle-cell {
+        width: 25px;
+        height: 25px;
+        font-size: 0.8rem;
+    }
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    
+    .preview-section,
+    .preview-section * {
+        visibility: visible;
+    }
+    
+    .preview-section {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: none !important;
+        color: black !important;
+    }
+    
+    .action-buttons {
+        display: none;
+    }
+    
+    .puzzle-cell {
+        border: 1px solid #000;
+        background: none !important;
+        color: black !important;
+    }
+}
+
+.word-list {
+    margin-top: 2rem;
+    color: white;
+}
+
+.word-list .words {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.word {
+    padding: 0.3rem 0.8rem;
+    background: var(--secondary-color);
+    border-radius: 4px;
+}
+
+.word.found {
+    background: var(--accent-color);
+    text-decoration: line-through;
+}
+
+.preview-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#puzzle-preview {
+    margin: 0 auto;
+}
+
+.victory-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.victory-content {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+}
+
+.victory-content h2 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.new-puzzle-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.new-puzzle-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.button-container {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.submit-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--secondary-color);
+} 
