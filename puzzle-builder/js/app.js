@@ -109,9 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render puzzle grid
     function renderPuzzle(grid) {
         puzzlePreview.innerHTML = '';
-        foundWords.clear(); // Reset found words
-        currentWord = '';   // Reset current word
-        puzzlePreview.style.gridTemplateColumns = `repeat(${grid.length}, 30px)`;
+        foundWords.clear();
+        currentWord = '';
+        
+        // Add data-size attribute for CSS scaling
+        puzzlePreview.setAttribute('data-size', grid.length);
+        puzzlePreview.style.gridTemplateColumns = `repeat(${grid.length}, 28px)`;
 
         grid.forEach((row, y) => {
             row.forEach((letter, x) => {

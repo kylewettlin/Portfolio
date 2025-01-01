@@ -349,6 +349,38 @@ select, textarea {
         padding: 0.5rem;
         background-color: var(--card-bg);
     }
+
+    /* Dynamic grid scaling based on puzzle size */
+    #puzzle-preview[data-size="10"] {
+        transform: scale(1);
+        margin: 0.5rem auto;
+    }
+
+    #puzzle-preview[data-size="15"] {
+        transform: scale(0.85);
+        margin: 0.5rem auto;
+    }
+
+    #puzzle-preview[data-size="20"] {
+        transform: scale(0.65);
+        margin: 0.5rem auto;
+    }
+
+    /* Ensure preview section expands to fit scaled content */
+    .preview-section {
+        min-height: fit-content;
+        width: 100%;
+        padding: 0.5rem;
+        margin: 0.5rem;
+        overflow: visible;
+    }
+
+    /* Adjust cell size for better base size */
+    .puzzle-cell {
+        width: 28px;
+        height: 28px;
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 375px) {
@@ -380,6 +412,18 @@ select, textarea {
 
     #puzzle-preview {
         transform: scale(0.9);
+    }
+
+    #puzzle-preview[data-size="10"] {
+        transform: scale(0.85);
+    }
+
+    #puzzle-preview[data-size="15"] {
+        transform: scale(0.65);
+    }
+
+    #puzzle-preview[data-size="20"] {
+        transform: scale(0.5);
     }
 }
 
