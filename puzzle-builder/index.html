@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Create custom word search puzzles, crosswords, and more with this local puzzle generator tool.">
     <title>Local Puzzle Builder</title>
     <link rel="stylesheet" href="styles.css">
@@ -15,7 +15,6 @@
         <h1>Local Puzzle Builder</h1>
         <nav>
             <button class="nav-btn active" data-type="word-search">Word Search</button>
-            <button class="nav-btn" data-type="crossword">Crossword</button>
             <button class="nav-btn" data-type="saved">Saved Puzzles</button>
         </nav>
     </header>
@@ -35,7 +34,7 @@
                     </div>
                     <div class="form-group">
                         <label for="word-list">Enter Words (one per line):</label>
-                        <textarea id="word-list" rows="10" required></textarea>
+                        <textarea id="word-list" rows="8" required></textarea>
                     </div>
                     <button type="submit" class="generate-btn">Generate Puzzle</button>
                 </form>
@@ -48,11 +47,6 @@
                     <button id="save-puzzle">Save</button>
                 </div>
             </div>
-        </section>
-
-        <section id="crossword" class="puzzle-section">
-            <!-- Crossword section to be implemented -->
-            <h2>Coming Soon!</h2>
         </section>
 
         <section id="saved" class="puzzle-section">

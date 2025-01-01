@@ -75,6 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (showingSolution && currentPuzzle.solution[y][x]) {
                 cell.style.backgroundColor = 'var(--accent-color)';
+            } else if (cell.classList.contains('found')) {
+                cell.style.backgroundColor = '#E36414';  // Keep found words highlighted
             } else {
                 cell.style.backgroundColor = 'var(--secondary-color)';
             }

@@ -135,8 +135,10 @@ select, textarea {
 
 .action-buttons {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     margin-top: 1rem;
+    justify-content: center;
 }
 
 .action-buttons button {
@@ -148,6 +150,11 @@ select, textarea {
     font-family: 'JetBrains Mono', monospace;
     border-radius: 4px;
     transition: background-color 0.3s ease;
+    flex: 1 1 auto;
+    min-width: 120px;
+    max-width: 200px;
+    margin: 0;
+    white-space: nowrap;
 }
 
 .action-buttons button:hover {
@@ -159,18 +166,99 @@ select, textarea {
 }
 
 @media (max-width: 768px) {
-    .puzzle-section.active {
-        grid-template-columns: 1fr !important;
+    header {
+        padding: 1rem;
     }
 
-    .input-section {
-        margin-bottom: 1rem;
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .nav-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .puzzle-section.active {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+
+    .input-section, .preview-section {
+        padding: 1rem;
     }
 
     .puzzle-cell {
-        width: 25px;
-        height: 25px;
+        width: 24px;
+        height: 24px;
+        font-size: 0.9rem;
+    }
+
+    .word-list {
+        margin-top: 1rem;
+    }
+
+    .word {
+        padding: 0.2rem 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    .action-buttons button {
+        max-width: none;
+        width: 100%;
+        padding: 0.8rem 1rem;
+    }
+
+    #puzzle-preview {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    select, textarea, button {
+        font-size: 16px;
+        padding: 0.8rem;
+    }
+
+    .victory-content {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .puzzle-cell {
+        width: 20px;
+        height: 20px;
         font-size: 0.8rem;
+    }
+
+    .nav-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .puzzle-section.active {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        overflow-y: auto;
+        height: calc(100vh - 100px);
+    }
+
+    .input-section {
+        flex: 0 0 300px;
+    }
+
+    .preview-section {
+        flex: 1;
     }
 }
 
