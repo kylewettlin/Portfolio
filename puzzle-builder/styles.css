@@ -9,9 +9,10 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'JetBrains Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background-color: var(--bg-color);
-    color: var(--text-color);
 }
 
 header {
@@ -43,9 +44,10 @@ nav {
 }
 
 main {
+    flex: 1;
     max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    margin: 0 auto;
+    padding: 1rem;
     box-sizing: border-box;
     width: 100%;
 }
@@ -85,6 +87,11 @@ select, textarea {
     border: 1px solid var(--accent-color);
     color: white;
     border-radius: 4px;
+    box-sizing: border-box;
+    max-width: 100%;
+    resize: vertical;
+    min-height: 100px;
+    max-height: 300px;
 }
 
 .generate-btn {
@@ -107,6 +114,11 @@ select, textarea {
     padding: 2rem;
     border-radius: 8px;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 #puzzle-preview {
@@ -176,9 +188,13 @@ select, textarea {
         width: 100%;
     }
 
+    body {
+        min-height: 100vh;
+    }
+
     main {
-        margin: 1rem 0;
         padding: 0;
+        margin: 0;
     }
 
     h1 {
@@ -193,13 +209,16 @@ select, textarea {
     .puzzle-section.active {
         grid-template-columns: 1fr !important;
         gap: 0;
+        margin: 0;
+        width: 100%;
     }
 
     .input-section, 
     .preview-section {
+        margin: 0.5rem;
         padding: 1rem;
-        margin: 0 1rem 1rem;
         width: auto;
+        box-sizing: border-box;
         border-radius: 8px;
     }
 
@@ -210,8 +229,9 @@ select, textarea {
     }
 
     .word-list {
-        margin: 1rem;
+        margin: 1rem 0.5rem;
         width: auto;
+        box-sizing: border-box;
     }
 
     .word {
@@ -232,8 +252,10 @@ select, textarea {
     }
 
     #puzzle-preview {
-        margin: 0 auto;
+        margin: 1rem auto;
+        display: grid;
         justify-content: center;
+        width: fit-content;
     }
 
     select, textarea, button {
@@ -244,6 +266,24 @@ select, textarea {
     .victory-content {
         margin: 1rem;
         padding: 1.5rem;
+    }
+
+    /* Ensure proper spacing after puzzle generation */
+    .puzzle-section.active[style*="grid-template-columns: 1fr"] {
+        .preview-section {
+            margin-top: 0.5rem;
+        }
+    }
+
+    /* Remove any extra spacing at bottom */
+    .puzzle-section:last-child {
+        margin-bottom: 1rem;
+    }
+
+    textarea {
+        width: 100%;
+        margin: 0;
+        font-size: 16px; /* Prevent zoom on mobile */
     }
 }
 
@@ -416,4 +456,9 @@ select, textarea {
 
 .submit-btn:hover {
     background-color: var(--secondary-color);
+}
+
+/* Ensure proper containment of all elements */
+* {
+    box-sizing: border-box;
 } 
