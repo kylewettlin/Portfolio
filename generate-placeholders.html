@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Placeholders</title>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="450"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Create gradient placeholder
+        const gradient = ctx.createLinearGradient(0, 0, 800, 450);
+        gradient.addColorStop(0, '#1a1a1a');
+        gradient.addColorStop(1, '#2a2a2a');
+        
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 800, 450);
+        
+        // Add text
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '30px SF Pro Display';
+        ctx.textAlign = 'center';
+        ctx.fillText('Coming Soon', 400, 225);
+        
+        // Save as image
+        const link = document.createElement('a');
+        link.download = 'placeholder.jpg';
+        link.href = canvas.toDataURL('image/jpeg');
+        link.click();
+    </script>
+</body>
+</html> 
