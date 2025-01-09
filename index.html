@@ -2,201 +2,94 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Kyle Wettlin's portfolio - Web Developer and Game Developer specializing in creative digital experiences. View my projects in web development, game design, and UI/UX.">
-    <title>Kyle Wettlin Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyle Wettlin - Portfolio Experiences</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/landing.css">
 </head>
 <body>
+    <div class="gradient-overlay"></div>
     <main>
-        <section class="hero">
-            <div class="hero-content">
-                <div class="name-container">
-                    <span>Kyle Wettlin</span>
-                </div>
-                <h2>&lt;Student&gt;</h2>
-                <p class="bio">
-                    Web Developer and Designer.<br>
-                    Video Game Developer and Designer.
-                </p>
-                <div class="social-links">
-                    <a href="https://github.com/kylewettlin" target="_blank" rel="noopener noreferrer">
-                        <img src="Images/github.png" alt="GitHub" class="social-icon">
-                    </a>
-                    <a href="https://www.linkedin.com/in/kyle-wettlin-5257742ba/" target="_blank" rel="noopener noreferrer">
-                        <img src="Images/linkedin.png" alt="LinkedIn" class="social-icon">
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="Images/headshot.jpg" alt="Kyle Wettlin" class="headshot">
-            </div>
-        </section>
-        <section id="projects" class="projects">
-            <h2 class="section-title">Projects</h2>
-            <div class="project-grid">
-                <article class="project-card">
-                    <img src="Images/AlbumCollector.jpg" alt="Project 1 Screenshot" class="project-image">
-                    <div class="project-content">
-                        <h3>Album Collector</h3>
-                        <p class="project-description">
-                            A local app to help keep track of your favorite albums. You can search Spotify's API to find any album, add it to your collection, and rate it. Currently only runs on MacOS, but a web-based version is in development.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">C++</span>
-                            <span class="tech-tag">Makefile</span>
-                            <span class="tech-tag">Spotify API</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                            <a href="https://github.com/kylewettlin/AlbumCollector" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        </div>
+        <header>
+            <h1>Kyle Wettlin</h1>
+            <p>Select Your Experience</p>
+        </header>
+        
+        <section class="portfolio-grid">
+            <a href="starter-portfolio/" class="portfolio-box">
+                <div class="box-content">
+                    <div class="image-container">
+                        <img src="images/starter-thumb.jpg" alt="Starter Portfolio Preview">
                     </div>
-                </article>
-
-                <article class="project-card">
-                    <img src="Images/PuzzleGenerator.png" alt="Puzzle Generator Screenshot" class="project-image">
-                    <div class="project-content">
-                        <h3>Local Puzzle Builder</h3>
-                        <p class="project-description">
-                            A web-based tool for creating custom word search puzzles, crosswords, and other puzzle types. Built with modern web technologies, it allows users to generate, save, and print puzzles directly from their browser.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">LocalStorage</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="/puzzle-builder" class="project-link" target="_blank" rel="noopener noreferrer">Try It Out</a>
-                            <a href="https://github.com/kylewettlin/puzzle-builder" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <img src="Images/GamblersGauntlet.png" alt="Gambler's Gauntlet Screenshot" class="project-image pixel-art">
-                    <div class="project-content">
-                        <h3>Gamblers' Gauntlet</h3>
-                        <p class="project-description">
-                            A 2D Roguelike dungeon crawler that combines traditional gambling games with action gameplay. Players navigate through procedurally generated dungeons while engaging in various gambling mechanics to progress.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Godot</span>
-                            <span class="tech-tag">GDScript</span>
-                            <span class="tech-tag">Asperite</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/kylewettlin/GamblersGauntlet" class="project-link" target="_blank" rel="noopener noreferrer">Work In Progress...</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <img src="Images/LaundrySafe.png" alt="LaundrySafe Project Screenshot" class="project-image">
-                    <div class="project-content">
-                        <h3>LaundrySafe Team Project</h3>
-                        <p class="project-description">
-                            My first ever webpage that was made for a class project. Taught me how to deploy using GitHub and develop an app in a team environment. 
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">Team Collaboration</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://kylewettlin.github.io" class="project-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-        <section id="skills" class="skills">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Game Development</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Unity</span>
-                        <span class="skill-tag">Godot</span>
-                        <span class="skill-tag">C#</span>
-                        <span class="skill-tag">Game Design</span>
-                        <span class="skill-tag">Level Design</span>
+                    <div class="text-content">
+                        <h2>Classic Portfolio</h2>
+                        <p>A comprehensive showcase of my projects and skills</p>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Web Development</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">HTML</span>
-                        <span class="skill-tag">CSS</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">React</span>
+            </a>
+            
+            <a href="#" class="portfolio-box coming-soon">
+                <div class="box-content">
+                    <div class="image-container">
+                        <img src="images/interactive-thumb.jpg" alt="Interactive Experience Preview">
+                    </div>
+                    <div class="text-content">
+                        <h2>Interactive Experience</h2>
+                        <p>An immersive journey through code and creativity</p>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Design</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Blender</span>
-                        <span class="skill-tag">2D Art</span>
-                        <span class="skill-tag">3D Modeling</span>
-                        <span class="skill-tag">UI/UX</span>
+            </a>
+            
+            <a href="#" class="portfolio-box coming-soon">
+                <div class="box-content">
+                    <div class="image-container">
+                        <img src="images/game-thumb.jpg" alt="Game Portfolio Preview">
+                    </div>
+                    <div class="text-content">
+                        <h2>Game Portfolio</h2>
+                        <p>Explore my game development projects</p>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section id="contact" class="contact">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <form id="contactForm" class="contact-form" action="https://formspree.io/f/xeooalrz" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+            </a>
+            
+            <a href="#" class="portfolio-box coming-soon">
+                <div class="box-content">
+                    <div class="image-container">
+                        <img src="images/creative-thumb.jpg" alt="Creative Portfolio Preview">
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                    <div class="text-content">
+                        <h2>Creative Portfolio</h2>
+                        <p>Where code meets design</p>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-                <div id="successMessage" class="success-message hidden">
-                    Thanks for your message! I'll get back to you soon.
                 </div>
-            </div>
+            </a>
+            
+            <a href="#" class="portfolio-box coming-soon">
+                <div class="box-content">
+                    <div class="image-container">
+                        <img src="images/minimal-thumb.jpg" alt="Minimal Portfolio Preview">
+                    </div>
+                    <div class="text-content">
+                        <h2>Minimal Portfolio</h2>
+                        <p>Simple. Clean. Effective.</p>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="#" class="portfolio-box coming-soon">
+                <div class="box-content">
+                    <div class="image-container">
+                        <img src="images/experimental-thumb.jpg" alt="Experimental Portfolio Preview">
+                    </div>
+                    <div class="text-content">
+                        <h2>Experimental</h2>
+                        <p>Pushing the boundaries of web technology</p>
+                    </div>
+                </div>
+            </a>
         </section>
     </main>
-    <script>
-        const form = document.getElementById('contactForm');
-        const successMessage = document.getElementById('successMessage');
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(form);
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    form.reset();
-                    form.style.display = 'none';
-                    successMessage.classList.remove('hidden');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        });
-    </script>
 </body>
 </html> 
