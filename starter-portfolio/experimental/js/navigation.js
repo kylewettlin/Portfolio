@@ -90,4 +90,14 @@ export function initNavigation() {
     // Initialize
     sections[0].classList.add('active');
     updateNavigation(0);
+
+    navItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            if (isAnimating) return;
+            currentSection = index;
+            smoothScroll(sections[currentSection], 
+                index > currentSection ? 'next' : 'prev');
+            updateNavigation(currentSection);
+        });
+    });
 } 
