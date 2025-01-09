@@ -3,15 +3,14 @@ export function initNavigation() {
     const navItems = document.querySelectorAll('.main-nav li');
     let currentSection = 0;
     let isAnimating = false;
-    let isScrolling = false;
-    let scrollTimeout;
+    let lastScrollTime = Date.now();
 
     function updateNavigation(index) {
         navItems.forEach(item => item.classList.remove('active'));
         navItems[index].classList.add('active');
     }
 
-    function smoothScroll(target) {
+    function smoothScroll(target, direction = 'next') {
         if (isAnimating) return;
         isAnimating = true;
 
@@ -19,6 +18,7 @@ export function initNavigation() {
         if (currentActive) {
             gsap.to(currentActive, {
                 opacity: 0,
+                y: direction === 'next' ? -50 : 50,
                 duration: 0.5,
                 onComplete: () => {
                     currentActive.classList.remove('active');
@@ -30,10 +30,12 @@ export function initNavigation() {
         gsap.fromTo(target,
             {
                 opacity: 0,
+                y: direction === 'next' ? 50 : -50,
                 visibility: 'visible'
             },
             {
                 opacity: 1,
+                y: 0,
                 duration: 0.5,
                 onStart: () => {
                     target.classList.add('active');
@@ -45,38 +47,47 @@ export function initNavigation() {
         );
     }
 
-    // Mouse wheel navigation with debounce
-    window.addEventListener('wheel', (e) => {
-        if (isAnimating || isScrolling) return;
+    function handleWheel(e) {
+        const now = Date.now();
+        if (now - lastScrollTime < 1000) return; // Debounce scroll events
         
-        clearTimeout(scrollTimeout);
-        isScrolling = true;
-
         if (e.deltaY > 0 && currentSection < sections.length - 1) {
             currentSection++;
+            smoothScroll(sections[currentSection], 'next');
         } else if (e.deltaY < 0 && currentSection > 0) {
             currentSection--;
+            smoothScroll(sections[currentSection], 'prev');
         }
-
-        smoothScroll(sections[currentSection]);
+        
         updateNavigation(currentSection);
+        lastScrollTime = now;
+    }
 
-        scrollTimeout = setTimeout(() => {
-            isScrolling = false;
-        }, 1000);
+    window.addEventListener('wheel', handleWheel, { passive: true });
+
+    // Touch support
+    let touchStartY = 0;
+    window.addEventListener('touchstart', e => {
+        touchStartY = e.touches[0].clientY;
     });
 
-    // Navigation click events
-    navItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            if (isAnimating) return;
-            currentSection = index;
-            smoothScroll(sections[currentSection]);
+    window.addEventListener('touchend', e => {
+        const touchEndY = e.changedTouches[0].clientY;
+        const diff = touchStartY - touchEndY;
+        
+        if (Math.abs(diff) > 50) { // Minimum swipe distance
+            if (diff > 0 && currentSection < sections.length - 1) {
+                currentSection++;
+                smoothScroll(sections[currentSection], 'next');
+            } else if (diff < 0 && currentSection > 0) {
+                currentSection--;
+                smoothScroll(sections[currentSection], 'prev');
+            }
             updateNavigation(currentSection);
-        });
+        }
     });
 
-    // Initialize first section
+    // Initialize
     sections[0].classList.add('active');
     updateNavigation(0);
 } 
