@@ -10,6 +10,28 @@ export function initNavigation() {
         navItems[index].classList.add('active');
     }
 
+    let scrollTimeout;
+    let scrollThreshold = 1500; // Increased threshold for smoother transitions
+
+    function handleWheel(e) {
+        const now = Date.now();
+        if (now - lastScrollTime < scrollThreshold) return;
+
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            if (e.deltaY > 0 && currentSection < sections.length - 1) {
+                currentSection++;
+                smoothScroll(sections[currentSection], 'next');
+            } else if (e.deltaY < 0 && currentSection > 0) {
+                currentSection--;
+                smoothScroll(sections[currentSection], 'prev');
+            }
+            updateNavigation(currentSection);
+            lastScrollTime = now;
+        }, 50); // Small delay for smoother detection
+    }
+
+    // Update smooth scroll animation
     function smoothScroll(target, direction = 'next') {
         if (isAnimating) return;
         isAnimating = true;
@@ -18,8 +40,9 @@ export function initNavigation() {
         if (currentActive) {
             gsap.to(currentActive, {
                 opacity: 0,
-                y: direction === 'next' ? -50 : 50,
-                duration: 0.5,
+                y: direction === 'next' ? -100 : 100, // Increased movement
+                duration: 0.8, // Slower animation
+                ease: "power2.inOut",
                 onComplete: () => {
                     currentActive.classList.remove('active');
                     currentActive.style.visibility = 'hidden';
@@ -30,13 +53,14 @@ export function initNavigation() {
         gsap.fromTo(target,
             {
                 opacity: 0,
-                y: direction === 'next' ? 50 : -50,
+                y: direction === 'next' ? 100 : -100,
                 visibility: 'visible'
             },
             {
                 opacity: 1,
                 y: 0,
-                duration: 0.5,
+                duration: 0.8,
+                ease: "power2.inOut",
                 onStart: () => {
                     target.classList.add('active');
                 },
@@ -45,22 +69,6 @@ export function initNavigation() {
                 }
             }
         );
-    }
-
-    function handleWheel(e) {
-        const now = Date.now();
-        if (now - lastScrollTime < 1000) return; // Debounce scroll events
-        
-        if (e.deltaY > 0 && currentSection < sections.length - 1) {
-            currentSection++;
-            smoothScroll(sections[currentSection], 'next');
-        } else if (e.deltaY < 0 && currentSection > 0) {
-            currentSection--;
-            smoothScroll(sections[currentSection], 'prev');
-        }
-        
-        updateNavigation(currentSection);
-        lastScrollTime = now;
     }
 
     window.addEventListener('wheel', handleWheel, { passive: true });
