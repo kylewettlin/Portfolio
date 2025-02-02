@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Rainbow Sorting Visualization (Larger Canvas)</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: #f4f4f4;
+    }
+    #controls {
+      padding: 10px;
+      background: #ccc;
+    }
+    #sortButton, #resetButton {
+      margin-left: 10px;
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+    #algorithmSelect {
+      padding: 5px;
+      font-size: 14px;
+    }
+    #canvasContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    canvas {
+      background: white;
+      border: 1px solid #999;
+    }
+  </style>
+</head>
+<body>
+<div id="controls">
+  <label for="algorithmSelect"><strong>Sorting Algorithm:</strong></label>
+  <select id="algorithmSelect">
+    <option value="bubble">Bubble Sort</option>
+    <option value="insertion">Insertion Sort</option>
+    <option value="selection">Selection Sort</option>
+    <option value="merge">Merge Sort</option>
+  </select>
+  <button id="sortButton">Start Sorting</button>
+  <button id="resetButton">Reset</button>
+</div>
+
+<div id="canvasContainer">
+  <!-- Larger canvas: 1600 x 900 -->
+  <canvas id="myCanvas" width="1600" height="900"></canvas>
+</div>
+
+<script>
+/*
+  Rainbow Sorting Visualization
+  - Canvas enlarged to 1600x900.
+  - Single row for 36 sorted balls with bigger spacing to prevent overlap.
+*/
+
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+// 6 rainbow colors, each assigned an index (0..5).
+const rainbowColors = [
+  { name: 'red',    index: 0 },
+  { name: 'orange', index: 1 },
+  { name: 'yellow', index: 2 },
+  { name: 'green',  index: 3 },
+  { name: 'blue',   index: 4 },
+  { name: 'purple', index: 5 },
+];
+
+// We'll create 36 total balls (6 colors × 6 each).
+const numBalls = 36;
+const ballRadius = 10;
+
+// We'll define the top ~70% for unsorted bouncing, bottom ~30% for sorted.
+const unsortedRegionHeight = canvas.height * 0.7;
+const sortedRegionTop = unsortedRegionHeight;
+
+let balls = [];
+let sortInProgress = false;
+let sortAlgorithm = 'bubble';
+let sortGenerator = null;
+let animationId = null;
+
+// Keep track of how many of each color are placed in the bottom row
+let colorSortedCount = [0, 0, 0, 0, 0, 0];
+
+// ------------------ Initialization ------------------
+
+function initBalls() {
+  sortInProgress = false;
+  balls = [];
+  colorSortedCount = [0, 0, 0, 0, 0, 0];
+
+  // Distribute the 6 colors evenly (36/6=6 each).
+  const colorIndices = [];
+  for (let c = 0; c < 6; c++) {
+    for (let i = 0; i < 6; i++) {
+      colorIndices.push(c);
+    }
+  }
+  shuffleArray(colorIndices);
+
+  for (let i = 0; i < numBalls; i++) {
+    const colorIndex = colorIndices[i];
+    const colorName = rainbowColors[colorIndex].name;
+
+    // random positions in top region
+    const x = ballRadius + Math.random() * (canvas.width - ballRadius * 2);
+    const y = ballRadius + Math.random() * (unsortedRegionHeight - ballRadius * 2);
+
+    // random velocity
+    let vx = Math.random() * 6 - 3;
+    let vy = Math.random() * 6 - 3;
+    if (Math.abs(vx) < 0.5) vx = vx < 0 ? -1 : 1;
+    if (Math.abs(vy) < 0.5) vy = vy < 0 ? -1 : 1;
+
+    balls.push({
+      x, y, vx, vy,
+      radius: ballRadius,
+      colorIndex,
+      color: colorName,
+      sorted: false,
+      targetX: 0,
+      targetY: 0,
+    });
+  }
+}
+
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
+// ------------------ Sorting Generators ------------------
+
+function* bubbleSort(arr) {
+  const n = arr.length;
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      if (arr[j].colorIndex > arr[j + 1].colorIndex) {
+        swapBalls(arr, j, j + 1);
+        yield;
+      }
+      yield;
+    }
+    markFinal(arr, n - i - 1);
+    yield;
+  }
+}
+
+function markFinal(arr, idx) {
+  if (!arr[idx].sorted) {
+    arr[idx].sorted = true;
+    moveToSortedPosition(arr[idx]);
+  }
+}
+
+// Position the ball in a single row at the bottom, in color-sorted order.
+function moveToSortedPosition(ball) {
+  const colorIdx = ball.colorIndex;
+  colorSortedCount[colorIdx]++;
+
+  // Sum how many were sorted in earlier color groups
+  let offset = 0;
+  for (let c = 0; c < colorIdx; c++) {
+    offset += colorSortedCount[c];
+  }
+  // offset is how many total balls come before this color
+
+  // We'll space out each ball horizontally so they never overlap
+  const spacing = 20; // bigger spacing to avoid overlap
+  const slotWidth = ball.radius * 2 + spacing; // each slot
+  const totalWidth = numBalls * slotWidth;
+
+  // Center the entire row in the canvas
+  const xStart = (canvas.width - totalWidth) / 2;
+
+  // The 'position' among this color group is colorSortedCount[colorIdx] - 1
+  const finalSlotIndex = offset + (colorSortedCount[colorIdx] - 1);
+
+  const finalX = xStart + finalSlotIndex * slotWidth + ball.radius;
+  const finalY = sortedRegionTop + (canvas.height - sortedRegionTop) / 2;
+
+  ball.targetX = finalX;
+  ball.targetY = finalY;
+}
+
+// Insertion Sort
+function* insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let key = arr[i];
+    let j = i - 1;
+    while (j >= 0 && arr[j].colorIndex > key.colorIndex) {
+      arr[j + 1] = arr[j];
+      j--;
+      yield;
+    }
+    arr[j + 1] = key;
+    yield;
+    if (i === arr.length - 1) {
+      // Mark all final at the end
+      for (let x = 0; x < arr.length; x++) {
+        markFinal(arr, x);
+        yield;
+      }
+    }
+  }
+}
+
+// Selection Sort
+function* selectionSort(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j].colorIndex < arr[minIndex].colorIndex) {
+        minIndex = j;
+      }
+      yield;
+    }
+    if (minIndex !== i) {
+      swapBalls(arr, i, minIndex);
+      yield;
+    }
+    markFinal(arr, i);
+    yield;
+  }
+  markFinal(arr, arr.length - 1);
+  yield;
+}
+
+// Quick Sort
+function* quickSort(arr) {
+  yield* quickSortRecursive(arr, 0, arr.length - 1);
+  // Mark anything left
+  for (let i = 0; i < arr.length; i++) {
+    if (!arr[i].sorted) {
+      markFinal(arr, i);
+      yield;
+    }
+  }
+}
+
+function* quickSortRecursive(array, left, right) {
+  if (left < right) {
+    let pivotIdx = yield* partition(array, left, right);
+    markFinal(array, pivotIdx);
+    yield;
+    yield* quickSortRecursive(array, left, pivotIdx - 1);
+    yield* quickSortRecursive(array, pivotIdx + 1, right);
+  }
+}
+
+function* partition(array, left, right) {
+  let pivotValue = array[right].colorIndex;
+  let pivotIndex = left;
+  for (let i = left; i < right; i++) {
+    if (array[i].colorIndex < pivotValue) {
+      swapBalls(array, i, pivotIndex);
+      pivotIndex++;
+      yield;
+    }
+    yield;
+  }
+  swapBalls(array, pivotIndex, right);
+  yield;
+  return pivotIndex;
+}
+
+// Merge Sort
+function* mergeSort(arr) {
+  yield* mergeSortRecursive(arr, 0, arr.length);
+  for (let i = 0; i < arr.length; i++) {
+    markFinal(arr, i);
+    yield;
+  }
+}
+function* mergeSortRecursive(array, start, end) {
+  if (end - start <= 1) return;
+  let mid = Math.floor((start + end) / 2);
+  yield* mergeSortRecursive(array, start, mid);
+  yield* mergeSortRecursive(array, mid, end);
+  yield* merge(array, start, mid, end);
+}
+
+function* merge(array, start, mid, end) {
+  let left = array.slice(start, mid);
+  let right = array.slice(mid, end);
+  let i = 0, j = 0, k = start;
+  while (i < left.length && j < right.length) {
+    if (left[i].colorIndex <= right[j].colorIndex) {
+      array[k] = left[i];
+      i++;
+    } else {
+      array[k] = right[j];
+      j++;
+    }
+    k++;
+    yield;
+  }
+  while (i < left.length) {
+    array[k] = left[i];
+    i++;
+    k++;
+    yield;
+  }
+  while (j < right.length) {
+    array[k] = right[j];
+    j++;
+    k++;
+    yield;
+  }
+}
+
+// Swap + velocities
+function swapBalls(arr, i, j) {
+  [arr[i], arr[j]] = [arr[j], arr[i]];
+  let tempVx = arr[i].vx;
+  let tempVy = arr[i].vy;
+  arr[i].vx = arr[j].vx;
+  arr[i].vy = arr[j].vy;
+  arr[j].vx = tempVx;
+  arr[j].vy = tempVy;
+}
+
+// ------------------ Animation ------------------
+
+function update() {
+  // Move unsorted + bounce, or move sorted to target
+  for (let b of balls) {
+    if (!b.sorted) {
+      b.x += b.vx;
+      b.y += b.vy;
+      // bounce horizontally
+      if (b.x - b.radius < 0) {
+        b.x = b.radius;
+        b.vx *= -1;
+      } else if (b.x + b.radius > canvas.width) {
+        b.x = canvas.width - b.radius;
+        b.vx *= -1;
+      }
+      // bounce vertically in top region
+      if (b.y - b.radius < 0) {
+        b.y = b.radius;
+        b.vy *= -1;
+      }
+      let bottomBoundary = unsortedRegionHeight - b.radius;
+      if (b.y > bottomBoundary) {
+        b.y = bottomBoundary;
+        b.vy *= -1;
+      }
+    } else {
+      // move gently toward final sorted position
+      let dx = b.targetX - b.x;
+      let dy = b.targetY - b.y;
+      let dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist > 0.5) {
+        b.x += dx * 0.1;
+        b.y += dy * 0.1;
+      } else {
+        b.x = b.targetX;
+        b.y = b.targetY;
+      }
+    }
+  }
+
+  // Next step in sorting generator
+  if (sortInProgress && sortGenerator) {
+    let result = sortGenerator.next();
+    if (result.done) {
+      sortInProgress = false;
+    }
+  }
+
+  draw();
+  animationId = requestAnimationFrame(update);
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // dividing line
+  ctx.beginPath();
+  ctx.moveTo(0, unsortedRegionHeight);
+  ctx.lineTo(canvas.width, unsortedRegionHeight);
+  ctx.strokeStyle = '#555';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.closePath();
+
+  // labels
+  ctx.fillStyle = '#555';
+  ctx.fillText('UNSORTED BOUNCING AREA', 10, 20);
+  ctx.fillText('SORTED AREA', 10, unsortedRegionHeight + 20);
+
+  // draw all balls
+  for (let b of balls) {
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, b.radius, 0, 2*Math.PI, false);
+    ctx.fillStyle = b.color;
+    ctx.fill();
+    ctx.closePath();
+  }
+}
+
+// ------------------ Controls ------------------
+
+document.getElementById('sortButton').addEventListener('click', () => {
+  if (!sortInProgress) {
+    sortAlgorithm = document.getElementById('algorithmSelect').value;
+    sortGenerator = createSortGenerator(sortAlgorithm, balls);
+    sortInProgress = true;
+  }
+});
+
+document.getElementById('resetButton').addEventListener('click', () => {
+  cancelAnimationFrame(animationId);
+  initBalls();
+  animationId = requestAnimationFrame(update);
+});
+
+function createSortGenerator(algo, arr) {
+  switch (algo) {
+    case 'bubble':    return bubbleSort(arr);
+    case 'insertion': return insertionSort(arr);
+    case 'selection': return selectionSort(arr);
+    case 'quick':     return quickSort(arr);
+    case 'merge':     return mergeSort(arr);
+    default:          return bubbleSort(arr);
+  }
+}
+
+// ------------------ Start ------------------
+initBalls();
+animationId = requestAnimationFrame(update);
+</script>
+</body>
+</html>
