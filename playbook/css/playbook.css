@@ -1,0 +1,106 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(ellipse at center, #3a0000 0%, #000000 70%);
+    font-family: 'Almendra SC', serif;
+    overflow: hidden;
+}
+
+.book-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0.9); /* Adjust scale as needed */
+}
+
+.book-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.book-highlight {
+    position: absolute;
+    bottom: -2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 1;
+}
+
+.book-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-align: center;
+    z-index: 3;
+}
+
+.title {
+    font-size: 3.5vw; /* Responsive font size */
+    margin: 0;
+    position: absolute;
+    top: 28%;
+    letter-spacing: 0.1em;
+}
+
+.est {
+    font-size: 1.5vw;
+    margin: 0;
+    position: absolute;
+    top: 38%;
+}
+
+.enter-button {
+    position: absolute;
+    top: 52%;
+    display: block;
+    text-decoration: none;
+    color: #5c5c5c;
+    font-size: 1.5vw;
+}
+
+.enter-button img {
+    display: block;
+    width: 7vw;
+    height: auto;
+    margin: 0 auto;
+}
+
+.enter-button span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 100%;
+    font-size: 1vw;
+    color: black;
+}
+
+
+.author-info {
+    position: absolute;
+    bottom: 10%;
+    font-size: 1.4vw;
+    line-height: 1;
+}
+
+.author-name {
+    font-size: 2.2vw;
+    margin-top: 0.2em;
+} 
