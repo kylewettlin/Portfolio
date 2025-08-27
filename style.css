@@ -1,0 +1,420 @@
+/* OKLCH Color Variables */
+:root {
+    /* Dark mode base colors using OKLCH */
+    --bg-primary: oklch(0.15 0.02 240);        /* Very dark blue-gray */
+    --bg-secondary: oklch(0.18 0.03 240);      /* Slightly lighter dark */
+    --text-primary: oklch(0.85 0.02 60);       /* Warm off-white */
+    --text-secondary: oklch(0.65 0.03 60);     /* Muted warm gray */
+    --text-tertiary: oklch(0.45 0.04 60);      /* Darker warm gray */
+    
+    /* Expanded accent color palette */
+    --accent-blue: oklch(0.7 0.15 240);        /* Vibrant blue */
+    --accent-green: oklch(0.7 0.15 150);       /* Vibrant green */
+    --accent-orange: oklch(0.7 0.15 60);       /* Vibrant orange */
+    --accent-purple: oklch(0.7 0.15 300);      /* Vibrant purple */
+    --accent-cyan: oklch(0.7 0.15 200);        /* Vibrant cyan */
+    --accent-pink: oklch(0.7 0.15 350);        /* Vibrant pink */
+    --accent-red: oklch(0.7 0.15 20);          /* Vibrant red */
+    --accent-yellow: oklch(0.75 0.12 90);      /* Vibrant yellow */
+    --accent-lime: oklch(0.7 0.15 120);        /* Vibrant lime */
+    --accent-indigo: oklch(0.65 0.15 270);     /* Deep indigo */
+    --accent-teal: oklch(0.7 0.12 180);        /* Vibrant teal */
+    --accent-coral: oklch(0.72 0.14 40);       /* Warm coral */
+    
+    /* Project-specific color themes */
+    --project-album: oklch(0.7 0.15 350);      /* Pink theme for Album Collector */
+    --project-puzzle: oklch(0.7 0.15 120);     /* Lime theme for Puzzle Builder */
+    --project-gauntlet: oklch(0.7 0.15 20);    /* Red theme for Gamblers' Gauntlet */
+    --project-csce: oklch(0.7 0.15 240);       /* Blue theme for CSCE 242 */
+    --project-freqlog: oklch(0.7 0.15 300);    /* Purple theme for Freqlog */
+    
+    /* UI element colors */
+    --border-color: oklch(0.25 0.04 240);      /* Subtle border */
+    --border-focus: oklch(0.4 0.08 240);       /* Focus state border */
+    --success-bg: oklch(0.2 0.08 150);         /* Success message background */
+    --success-border: oklch(0.3 0.12 150);     /* Success message border */
+    --success-text: oklch(0.8 0.1 150);        /* Success message text */
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* Layout */
+main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+section {
+    margin-bottom: 3rem;
+}
+
+/* Project styles */
+.project {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    border-left: 3px solid var(--text-tertiary);
+    padding-left: 1rem;
+    transition: all 0.3s ease;
+}
+
+.project:last-child {
+    border-bottom: none;
+}
+
+.project:hover {
+    transform: translateX(4px);
+}
+
+/* Individual project color themes */
+.project-album {
+    border-left-color: var(--project-album);
+}
+
+.project-puzzle {
+    border-left-color: var(--project-puzzle);
+}
+
+.project-gauntlet {
+    border-left-color: var(--project-gauntlet);
+}
+
+.project-csce {
+    border-left-color: var(--project-csce);
+}
+
+.project-freqlog {
+    border-left-color: var(--project-freqlog);
+}
+
+.tech {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.links {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Skills */
+.skill-group {
+    margin-bottom: 1rem;
+}
+
+.skill-group h3 {
+    margin-bottom: 0.25rem;
+}
+
+.skill-group p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+/* Links */
+a {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--text-tertiary);
+    transition: text-decoration-color 0.2s ease;
+}
+
+a:hover {
+    text-decoration-color: var(--accent-blue);
+}
+
+/* Contact form */
+.contact-form {
+    margin: 2rem 0;
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    color: var(--text-primary);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--border-focus);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-btn {
+    background-color: var(--accent-blue);
+    color: var(--text-primary);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--accent-cyan);
+}
+
+.success-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--success-bg);
+    border: 1px solid var(--success-border);
+    color: var(--success-text);
+    font-size: 0.9rem;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Footer */
+footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    main {
+        padding: 1rem 0.5rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+    }
+    
+    body {
+        font-size: 14px;
+    }
+    
+    .contact-form {
+        max-width: 100%;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.9rem;
+    }
+}
+
+/* Highlight classes for important terms */
+.highlight-tech {
+    color: var(--accent-blue);
+    font-weight: 500;
+}
+
+.highlight-creative {
+    color: var(--accent-purple);
+    font-weight: 500;
+}
+
+.highlight-project {
+    color: var(--accent-green);
+    font-weight: 500;
+}
+
+.highlight-skill {
+    color: var(--accent-orange);
+    font-weight: 500;
+}
+
+.highlight-contact {
+    color: var(--accent-cyan);
+    font-weight: 500;
+}
+
+/* Extended highlight classes for more variety */
+.highlight-web {
+    color: var(--accent-teal);
+    font-weight: 500;
+}
+
+.highlight-game {
+    color: var(--accent-red);
+    font-weight: 500;
+}
+
+.highlight-design {
+    color: var(--accent-pink);
+    font-weight: 500;
+}
+
+.highlight-code {
+    color: var(--accent-indigo);
+    font-weight: 500;
+}
+
+.highlight-api {
+    color: var(--accent-lime);
+    font-weight: 500;
+}
+
+.highlight-tool {
+    color: var(--accent-yellow);
+    font-weight: 500;
+}
+
+.highlight-framework {
+    color: var(--accent-coral);
+    font-weight: 500;
+}
+
+/* Project-specific highlights */
+.highlight-album {
+    color: var(--project-album);
+    font-weight: 500;
+}
+
+.highlight-puzzle {
+    color: var(--project-puzzle);
+    font-weight: 500;
+}
+
+.highlight-gauntlet {
+    color: var(--project-gauntlet);
+    font-weight: 500;
+}
+
+.highlight-csce {
+    color: var(--project-csce);
+    font-weight: 500;
+}
+
+.highlight-freqlog {
+    color: var(--project-freqlog);
+    font-weight: 500;
+}
+
+/* Print styles */
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+    
+    a {
+        color: black;
+        text-decoration: none;
+    }
+    
+    .links::after {
+        content: " (" attr(href) ")";
+    }
+    
+    .contact-form,
+    .success-message {
+        display: none;
+    }
+    
+    /* Reset highlight colors for print */
+    .highlight-tech,
+    .highlight-creative,
+    .highlight-project,
+    .highlight-skill,
+    .highlight-contact,
+    .highlight-web,
+    .highlight-game,
+    .highlight-design,
+    .highlight-code,
+    .highlight-api,
+    .highlight-tool,
+    .highlight-framework,
+    .highlight-album,
+    .highlight-puzzle,
+    .highlight-gauntlet,
+    .highlight-csce,
+    .highlight-freqlog {
+        color: black;
+        font-weight: normal;
+    }
+}

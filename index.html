@@ -4,94 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kyle Wettlin</title>
-    <link rel="icon" type="image/jpeg" href="Images/Kfavicon.png">
+    <link rel="icon" type="image/png" href="_archive/Images/Kfavicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/landing.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="gradient-overlay"></div>
     <main>
         <header>
             <h1>Kyle Wettlin</h1>
-            <p>Check out my work!</p>
+            <p class="subtitle"><span class="highlight-web">Web Developer</span> • <span class="highlight-game">Game Developer</span> • <span class="highlight-skill">Student</span></p>
         </header>
-       
-        <section class="portfolio-grid">
-            <a href="starter-portfolio/index.html" class="portfolio-box">
-                <div class="box-content">
-                    <div class="image-container">
-                        <img src="starter-portfolio/Images/headshot.jpg" alt="Starter Portfolio Preview">
-                    </div>
-                    <div class="text-content">
-                        <h2>Portfolio</h2>
-                        <p>My projects, skills, and contact information.</p>
-                    </div>
-                </div>
-            </a>
-            
-            <a href="https://freqlog.com" class="portfolio-box" target="_blank">
-                <div class="box-content">
-                    <div class="image-container">
-                        <img src="Images/background.png" alt="Freqlog">
-                    </div>
-                    <div class="text-content">
-                        <h2>Freqlog</h2>
-                        <p>Last.fm and Letterboxd shuffled together.</p>
-                    </div>
-                </div>
-            </a>
-            <!---
-            <a href="#" class="portfolio-box coming-soon">
-                <div class="box-content">
-                    <div class="image-container">
-                        <img src="https://via.placeholder.com/800x450/1a1a1a/ffffff?text=Coming+Soon" alt="Placeholder">
-                    </div>
-                    <div class="text-content">
-                        <h2>Game Portfolio</h2>
-                        <p>Explore my game development projects</p>
-                    </div>
-                </div>
-            </a>
-            
-            <a href="#" class="portfolio-box coming-soon">
-                <div class="box-content">
-                    <div class="image-container">
-                        <img src="https://via.placeholder.com/800x450/1a1a1a/ffffff?text=Coming+Soon" alt="Placeholder">
-                    </div>
-                    <div class="text-content">
-                        <h2>Creative Portfolio</h2>
-                        <p>Where code meets design</p>
-                    </div>
-                </div>
-            </a>
-            
-            <a href="#" class="portfolio-box coming-soon">
-                <div class="box-content">
-                    <div class="image-container">
-                        <img src="https://via.placeholder.com/800x450/1a1a1a/ffffff?text=Coming+Soon" alt="Placeholder">
-                    </div>
-                    <div class="text-content">
-                        <h2>Minimal Portfolio</h2>
-                        <p>Simple. Clean. Effective.</p>
-                    </div>
-                </div>
-            </a>
-        
-            <a href="starter-portfolio/experimental/index.html" class="portfolio-box">
-                <div class="box-content">
-                    <div class="image-container">
-                        <img src="https://via.placeholder.com/800x450/1a1a1a/ffffff?text=Coming+Soon" alt="Experimental Portfolio Preview">
-                    </div>
-                    <div class="text-content">
-                        <h2>Experimental</h2>
-                        <p>An immersive portfolio experience</p>
-                    </div>
-                </div>
-            </a>
-        -->
+
+        <section id="about">
+            <h2>About</h2>
+            <p>I create <span class="highlight-design">digital experiences</span> through <span class="highlight-web">web development</span> and <span class="highlight-game">game design</span>. Currently studying and building <span class="highlight-project">projects</span> that combine <span class="highlight-code">technical skills</span> with <span class="highlight-creative">creative design</span>.</p>
         </section>
-        </main>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            
+            <article class="project project-album">
+                <h3><span class="highlight-album">Album Collector</span></h3>
+                <p>A local app to help keep track of your favorite albums. Search <span class="highlight-api">Spotify's API</span> to find any album, add it to your collection, and rate it. Currently runs on <span class="highlight-tool">MacOS</span> with a <span class="highlight-web">web-based version</span> in development.</p>
+                <p class="tech"><span class="highlight-code">C++</span> • <span class="highlight-tool">Makefile</span> • <span class="highlight-api">Spotify API</span></p>
+                <p class="links"><a href="https://github.com/kylewettlin/AlbumCollector" target="_blank">GitHub</a></p>
+            </article>
+
+            <article class="project project-puzzle">
+                <h3><span class="highlight-puzzle">Local Puzzle Builder</span></h3>
+                <p>A <span class="highlight-web">web-based tool</span> for creating custom <span class="highlight-creative">word search puzzles</span>, <span class="highlight-creative">crosswords</span>, and other puzzle types. Generate, save, and print puzzles directly from your <span class="highlight-web">browser</span>.</p>
+                <p class="tech"><span class="highlight-code">JavaScript</span> • <span class="highlight-framework">HTML5</span> • <span class="highlight-framework">CSS3</span> • <span class="highlight-api">LocalStorage</span></p>
+                <p class="links">
+                    <a href="_archive/starter-portfolio/puzzle-builder/index.html" target="_blank">Try It Out</a> • 
+                    <a href="https://github.com/kylewettlin/starter-portfolio/puzzle-builder" target="_blank">GitHub</a>
+                </p>
+            </article>
+
+            <article class="project project-gauntlet">
+                <h3><span class="highlight-gauntlet">Gamblers' Gauntlet</span></h3>
+                <p>A <span class="highlight-game">2D Roguelike</span> dungeon crawler that combines traditional <span class="highlight-game">gambling games</span> with <span class="highlight-game">action gameplay</span>. Players navigate through <span class="highlight-game">procedurally generated dungeons</span> while engaging in various <span class="highlight-game">gambling mechanics</span>.</p>
+                <p class="tech"><span class="highlight-tool">Godot</span> • <span class="highlight-code">GDScript</span> • <span class="highlight-tool">Aseprite</span></p>
+                <p class="links"><a href="https://github.com/kylewettlin/GamblersGauntlet" target="_blank">Work In Progress</a></p>
+            </article>
+
+            <article class="project project-csce">
+                <h3><span class="highlight-csce">CSCE 242 Website</span></h3>
+                <p>A constantly updated <span class="highlight-web">webpage</span> showcasing work from my <span class="highlight-skill">webpage design course</span>.</p>
+                <p class="tech"><span class="highlight-framework">HTML</span> • <span class="highlight-framework">CSS</span> • <span class="highlight-code">JavaScript</span></p>
+                <p class="links"><a href="https://kylewettlin.github.io" target="_blank">Check it out</a></p>
+            </article>
+
+            <article class="project project-freqlog">
+                <h3><span class="highlight-freqlog">Freqlog</span></h3>
+                <p><span class="highlight-web">Last.fm</span> and <span class="highlight-web">Letterboxd</span> shuffled together.</p>
+                <p class="links"><a href="https://freqlog.com" target="_blank">Visit Site</a></p>
+            </article>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skill-group">
+                <h3><span class="highlight-game">Game Development</span></h3>
+                <p><span class="highlight-tool">Unity</span> • <span class="highlight-tool">Godot</span> • <span class="highlight-code">C#</span> • <span class="highlight-game">Game Design</span> • <span class="highlight-game">Level Design</span></p>
+            </div>
+            <div class="skill-group">
+                <h3><span class="highlight-web">Web Development</span></h3>
+                <p><span class="highlight-framework">HTML</span> • <span class="highlight-framework">CSS</span> • <span class="highlight-code">JavaScript</span> • <span class="highlight-framework">React</span></p>
+            </div>
+            <div class="skill-group">
+                <h3><span class="highlight-design">Design</span></h3>
+                <p><span class="highlight-design">2D Art</span> • <span class="highlight-design">3D Modeling</span> • <span class="highlight-design">UI/UX</span></p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>
+                <a href="https://github.com/kylewettlin" target="_blank"><span class="highlight-contact">GitHub</span></a> • 
+                <a href="https://www.linkedin.com/in/kyle-wettlin-5257742ba/" target="_blank"><span class="highlight-contact">LinkedIn</span></a>
+            </p>
+            
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/xeooalrz" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            
+            <div id="successMessage" class="success-message hidden">
+                Thanks for your message! I'll get back to you soon.
+            </div>
+        </section>
+
+        <footer>
+            <p><a href="_archive/index_original.html">View Original Portfolio</a></p>
+        </footer>
+    </main>
+    
+    <script>
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    form.reset();
+                    form.style.display = 'none';
+                    successMessage.classList.remove('hidden');
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an error sending your message. Please try again.');
+            }
+        });
+    </script>
 </body>
-</html> 
+</html>
