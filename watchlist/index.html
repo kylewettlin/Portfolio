@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Watchlist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Password Protection Overlay -->
+    <div id="password-overlay" class="password-overlay">
+        <div class="password-container">
+            <h2>Enter Password</h2>
+            <input type="password" id="password-input" placeholder="Password" autocomplete="off">
+            <button onclick="checkPassword()">Enter</button>
+            <p id="error-message" class="error-message"></p>
+        </div>
+    </div>
+
+    <!-- Main Watchlist Content (hidden until authenticated) -->
+    <div id="watchlist-content" class="watchlist-content hidden">
+        <header>
+            <h1>Our Watchlist</h1>
+            <p class="subtitle">Movies & Shows to Watch Together</p>
+        </header>
+
+        <main class="watchlist-container">
+            <div class="watchlist-item watched">
+                <div class="item-number">1</div>
+                <div class="item-details">
+                    <h3>The Office</h3>
+                    <p class="item-type">TV Series</p>
+                </div>
+            </div>
+
+            <div class="watchlist-item">
+                <div class="item-number">2</div>
+                <div class="item-details">
+                    <h3>Breaking Bad</h3>
+                    <p class="item-type">TV Series</p>
+                </div>
+            </div>
+
+            <div class="watchlist-item">
+                <div class="item-number">3</div>
+                <div class="item-details">
+                    <h3>Bridgerton</h3>
+                    <p class="item-type">TV Series</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <button class="logout-btn" onclick="logout()">Lock Page</button>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

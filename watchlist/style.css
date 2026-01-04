@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #4a90e2 0%, #6ba3e8 50%, #8fb5ed 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Password Overlay Styles */
+.password-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #4a90e2 0%, #6ba3e8 50%, #8fb5ed 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.password-container {
+    background: white;
+    padding: 3rem 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.password-container h2 {
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #4a90e2 0%, #e8b923 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.password-container input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.password-container input:focus {
+    outline: none;
+    border-color: #e8b923;
+    box-shadow: 0 0 10px rgba(232, 185, 35, 0.3);
+}
+
+.password-container button {
+    width: 100%;
+    padding: 0.8rem;
+    background: linear-gradient(135deg, #4a90e2 0%, #5a9de5 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.password-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(232, 185, 35, 0.5);
+}
+
+.error-message {
+    color: #e74c3c;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    min-height: 1.2rem;
+}
+
+/* Main Content Styles */
+.watchlist-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.watchlist-content.hidden {
+    display: none;
+}
+
+header {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    background: linear-gradient(135deg, #4a90e2 0%, #e8b923 70%, #ffd700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(232, 185, 35, 0.2);
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Watchlist Container */
+.watchlist-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+}
+
+.watchlist-item {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 2px solid #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+.watchlist-item:last-child {
+    border-bottom: none;
+}
+
+.watchlist-item:hover {
+    background-color: #f8f9ff;
+}
+
+.watchlist-item.watched {
+    opacity: 0.6;
+}
+
+.watchlist-item.watched .item-details h3,
+.watchlist-item.watched .item-details p {
+    text-decoration: line-through;
+}
+
+.item-number {
+    background: linear-gradient(135deg, #5a9de5 0%, #4a90e2 100%);
+    color: #ffd700;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+    box-shadow: 0 3px 12px rgba(74, 144, 226, 0.4);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-details h3 {
+    color: #333;
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.item-type {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.watchlist-item.watched .item-number {
+    background: linear-gradient(135deg, #e8b923 0%, #ffd700 100%);
+    color: #4a90e2;
+    box-shadow: 0 3px 15px rgba(232, 185, 35, 0.5);
+    border: 2px solid rgba(255, 215, 0, 0.6);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+}
+
+.logout-btn {
+    padding: 0.8rem 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.logout-btn:hover {
+    background: white;
+    color: #4a90e2;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .watchlist-item {
+        flex-wrap: wrap;
+        padding: 1rem;
+    }
+    
+    .item-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        margin-right: 1rem;
+    }
+    
+    .item-details h3 {
+        font-size: 1.1rem;
+    }
+    
+}
