@@ -10,130 +10,197 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            line-height: 1.7;
+            color: #2c2c2c;
+            background: linear-gradient(160deg, #c0294f 0%, #d9503f 25%, #e88b4a 55%, #f0b86b 80%, #f5c88a 100%);
             min-height: 100vh;
-            padding: 40px 20px;
+            padding: 48px 20px;
         }
-        
+
         .container {
-            max-width: 800px;
+            max-width: 780px;
             margin: 0 auto;
-            background: #fff;
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 20px;
+            padding: 48px 44px;
+            box-shadow:
+                0 4px 24px rgba(180, 60, 60, 0.12),
+                0 24px 64px rgba(120, 40, 40, 0.18);
         }
-        
+
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 36px;
+            padding-bottom: 28px;
+            border-bottom: 2px solid #f2e4e0;
         }
-        
+
         .logo {
-            font-size: 32px;
-            font-weight: 700;
-            color: #d4111b;
-            margin-bottom: 8px;
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #c9303e, #e05a3a, #e88040);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 6px;
         }
-        
+
         .tagline {
-            color: #666;
-            font-size: 14px;
+            color: #888;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
-        
+
         h1 {
-            font-size: 28px;
-            color: #1a1a2e;
-            margin-bottom: 10px;
+            font-size: 26px;
+            font-weight: 700;
+            color: #1f1f1f;
+            margin-bottom: 12px;
         }
-        
+
         h2 {
-            font-size: 20px;
-            color: #1a1a2e;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #eee;
+            font-size: 18px;
+            font-weight: 700;
+            color: #1f1f1f;
+            margin-top: 36px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #fae8e2;
         }
-        
+
         p {
-            margin-bottom: 15px;
-            color: #444;
+            margin-bottom: 16px;
+            color: #3d3d3d;
+            font-size: 15px;
         }
-        
+
         ul {
-            margin-left: 25px;
-            margin-bottom: 15px;
+            margin-left: 20px;
+            margin-bottom: 16px;
+            list-style: none;
         }
-        
+
         li {
-            margin-bottom: 8px;
-            color: #444;
+            margin-bottom: 10px;
+            color: #3d3d3d;
+            font-size: 15px;
+            padding-left: 18px;
+            position: relative;
         }
-        
+
+        li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d14050, #e27040);
+        }
+
+        strong {
+            color: #1f1f1f;
+            font-weight: 600;
+        }
+
         .highlight {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #d4111b;
-            margin: 20px 0;
+            background: linear-gradient(135deg, #fef5f3, #fdf0ea);
+            padding: 22px 26px;
+            border-radius: 12px;
+            border-left: 4px solid #d44a4a;
+            margin: 24px 0;
         }
-        
+
         .highlight p {
             margin-bottom: 0;
             font-weight: 500;
+            color: #3a2020;
+            font-size: 15px;
         }
-        
-        .contact {
-            background: #4f4f57;
-            color: #fff;
-            padding: 25px;
-            border-radius: 10px;
-            margin-top: 30px;
-            text-align: center;
-        }
-        
-        .contact h3 {
-            margin-bottom: 10px;
-        }
-        
-        .contact a {
-            color: #d4111b;
+
+        a {
+            color: #c43040;
             text-decoration: none;
             font-weight: 600;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
         }
-        
+
+        a:hover {
+            border-bottom-color: #c43040;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #2b1a1e, #3a2228);
+            color: #f5ebe8;
+            padding: 28px 32px;
+            border-radius: 14px;
+            margin-top: 36px;
+            text-align: center;
+        }
+
+        .contact h3 {
+            margin-bottom: 8px;
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .contact p {
+            color: #ddd0cc;
+            margin-bottom: 0;
+        }
+
+        .contact a {
+            color: #f5a070;
+            border-bottom-color: transparent;
+        }
+
         .contact a:hover {
-            text-decoration: underline;
+            border-bottom-color: #f5a070;
         }
-        
+
         .date {
             text-align: center;
-            color: #999;
+            color: #aaa;
             font-size: 13px;
-            margin-top: 30px;
+            margin-top: 28px;
             padding-top: 20px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #f0e8e5;
         }
-        
+
+        .date p {
+            color: inherit;
+            margin-bottom: 0;
+        }
+
         @media (max-width: 600px) {
+            body {
+                padding: 24px 14px;
+            }
+
             .container {
-                padding: 25px;
+                padding: 28px 22px;
+                border-radius: 16px;
             }
-            
+
+            .logo {
+                font-size: 28px;
+            }
+
             h1 {
-                font-size: 24px;
+                font-size: 22px;
             }
-            
+
             h2 {
-                font-size: 18px;
+                font-size: 17px;
             }
         }
     </style>
@@ -144,57 +211,58 @@
             <div class="logo">PureCinema</div>
             <div class="tagline">No Ads. No Tracking. Just Movies & TV.</div>
         </div>
-        
+
         <h1>Privacy Policy</h1>
-        
+
         <div class="highlight">
-            <p>PureCinema is designed with your privacy in mind. We do not collect, store, or share any personal information.</p>
+            <p>PureCinema is built to work without accounts, ads, or tracking. We do not sell your data.</p>
         </div>
-        
-        <h2>Information We Do NOT Collect</h2>
-        <p>PureCinema does not collect:</p>
+
+        <h2>1. Data We Collect</h2>
+        <p>PureCinema does not collect personal information such as your name, email address, phone number, contacts, photos, precise location, or advertising ID.</p>
+        <p>PureCinema does not use third-party analytics SDKs.</p>
+
+        <h2>2. Data Stored Locally on Your Device</h2>
+        <p>PureCinema stores the following on your device only:</p>
         <ul>
-            <li>Personal identification information (name, email, phone number)</li>
-            <li>Location data</li>
-            <li>Device identifiers or advertising IDs</li>
-            <li>Usage analytics or tracking data</li>
-            <li>Any data sent to third-party analytics services</li>
+            <li>Recent search history</li>
+            <li>Favorites, watchlist items, and ratings</li>
+            <li>App preferences (theme, font size, sort option, language/region settings)</li>
+            <li>Onboarding progress</li>
+            <li>On-device recommendation data (taste/recommendation events, metadata, cache, exposure/telemetry state)</li>
+            <li>Image cache (posters/stills)</li>
         </ul>
-        
-        <h2>Data Stored Locally on Your Device</h2>
-        <p>To enhance your experience, PureCinema stores the following data <strong>locally on your device only</strong>:</p>
+
+        <h2>3. Data Sent to Third Parties</h2>
+        <p>To show movie and TV data, PureCinema sends requests to TMDB (The Movie Database). These requests may include:</p>
         <ul>
-            <li><strong>Search History:</strong> Your recent search queries are saved locally to help you quickly access previous searches. This data never leaves your device.</li>
-            <li><strong>Favorites:</strong> Movies and TV shows you mark as favorites are stored locally on your device.</li>
-            <li><strong>App Preferences:</strong> Your chosen theme, font size, and sort preferences are saved locally.</li>
+            <li>Search text you enter</li>
+            <li>Selected content language/region</li>
+            <li>Content IDs and query parameters needed to fetch details, episodes, cast, watch providers, trailers, and recommendations</li>
         </ul>
-        <p>All locally stored data can be cleared at any time through the app's settings or by deleting the app.</p>
-        
-        <h2>Third-Party Services</h2>
-        <p>PureCinema uses the following third-party service:</p>
+        <p>If you tap external links, PureCinema opens third-party apps or sites (such as TMDB, YouTube, or streaming providers). Those services handle data under their own privacy policies.</p>
+        <p>If you contact support, your email app handles that message. If you rate the app, Apple handles the App Store review flow.</p>
+
+        <h2>4. Your Choices</h2>
         <ul>
-            <li><strong>The Movie Database (TMDB) API:</strong> We use TMDB to fetch movie and TV show information, including titles, descriptions, release dates, cast information, and poster images. When you search for content, your search query is sent to TMDB's servers to retrieve results. Please refer to <a href="https://www.themoviedb.org/privacy-policy" target="_blank" style="color: #d4111b;">TMDB's Privacy Policy</a> for information on how they handle data.</li>
+            <li>You can clear recent search history in-app.</li>
+            <li>You can remove favorites and watchlist items in-app.</li>
+            <li>To remove all locally stored app data (including caches and recommendation data), delete the app.</li>
         </ul>
-        
-        <h2>Data Security</h2>
-        <p>Since we don't collect personal data, there is no personal data at risk. All app preferences and favorites are stored locally on your device using Apple's standard secure storage mechanisms.</p>
-        
-        <h2>Children's Privacy</h2>
-        <p>PureCinema does not knowingly collect any personal information from children under 13 years of age. The app is designed to be safe for users of all ages.</p>
-        
-        <h2>Changes to This Privacy Policy</h2>
-        <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated "Last Updated" date. We encourage you to review this Privacy Policy periodically.</p>
-        
-        <h2>Your Consent</h2>
-        <p>By using PureCinema, you consent to this Privacy Policy.</p>
-        
+
+        <h2>5. Children's Privacy</h2>
+        <p>PureCinema is not designed to collect personal data from children.</p>
+
+        <h2>6. Changes to This Policy</h2>
+        <p>We may update this policy from time to time. Any updates will be reflected by the "Last Updated" date above.</p>
+
         <div class="contact">
             <h3>Questions or Concerns?</h3>
             <p>Contact us at <a href="mailto:PureCinemaHelp@gmail.com">PureCinemaHelp@gmail.com</a></p>
         </div>
-        
+
         <div class="date">
-            <p>Last Updated: January 2026</p>
+            <p>Last Updated: February 18, 2026</p>
         </div>
     </div>
 </body>
