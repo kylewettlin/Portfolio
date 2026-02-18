@@ -26,6 +26,7 @@
     --project-puzzle: oklch(0.7 0.15 120);     /* Lime theme for Puzzle Builder */
     --project-gauntlet: oklch(0.7 0.15 20);    /* Red theme for Gamblers' Gauntlet */
     --project-csce: oklch(0.7 0.15 240);       /* Blue theme for CSCE 242 */
+    --project-purecinema: oklch(0.7 0.15 25);   /* Red-orange theme for PureCinema */
     --project-freqlog: oklch(0.7 0.15 300);    /* Purple theme for Freqlog */
     
     /* UI element colors */
@@ -129,6 +130,10 @@ section {
 
 .project-puzzle {
     border-left-color: var(--project-puzzle);
+}
+
+.project-purecinema {
+    border-left-color: var(--project-purecinema);
 }
 
 .project-gauntlet {
@@ -360,6 +365,11 @@ footer {
     font-weight: 500;
 }
 
+.highlight-purecinema {
+    color: var(--project-purecinema);
+    font-weight: 500;
+}
+
 .highlight-gauntlet {
     color: var(--project-gauntlet);
     font-weight: 500;
@@ -411,6 +421,7 @@ footer {
     .highlight-framework,
     .highlight-album,
     .highlight-puzzle,
+    .highlight-purecinema,
     .highlight-gauntlet,
     .highlight-csce,
     .highlight-freqlog {
