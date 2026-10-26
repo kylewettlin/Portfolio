@@ -5,48 +5,231 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kyle Wettlin</title>
 <link rel="icon" type="image/png" href="_archive/Images/Kfavicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f6f4ef;
+  --ink: #1c1b19;
+  --muted: #6e6a62;
+  --line: #e2ded5;
+  --accent: #e0562b;
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141412;
+    --ink: #ece9e2;
+    --muted: #9a958b;
+    --line: #2b2a26;
+    --accent: #ff7a50;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.65 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 5rem 1.25rem 3rem;
+}
+
+h1 {
+  font: 400 clamp(2.75rem, 9vw, 4rem)/1 var(--serif);
+  letter-spacing: -0.01em;
+  margin: 0 0 0.75rem;
+}
+h1 em { color: var(--accent); }
+
+.tagline { color: var(--muted); margin: 0; }
+
+h2 {
+  font: 500 0.75rem/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin: 4rem 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+h2::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+
+h3 {
+  font: 400 1.75rem/1.2 var(--serif);
+  margin: 0 0 0.35rem;
+}
+
+p { margin: 0 0 0.75rem; }
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 0.2s, color 0.2s;
+}
+a:hover { color: var(--accent); text-decoration-color: currentColor; }
+
+/* Projects */
+.project { margin-bottom: 3.5rem; }
+.project:last-child { margin-bottom: 0; }
+
+.meta {
+  font: 0.8rem/1.5 var(--mono);
+  color: var(--muted);
+}
+.meta a { color: var(--ink); }
+.meta a::after { content: " \2197"; }
+.meta a:hover { color: var(--accent); }
+
+.shot {
+  margin: 1.25rem 0 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--line);
+}
+.shot img, .shot video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  transition: transform 0.6s cubic-bezier(.2,.7,.2,1);
+}
+.project:hover .shot img,
+.project:hover .shot video { transform: scale(1.02); }
+
+/* Skills */
+ul { list-style: none; padding: 0; margin: 0; }
+li {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+}
+li:first-child { padding-top: 0; }
+li span { color: var(--muted); }
+
+/* Contact */
+form { margin-top: 1.5rem; display: grid; gap: 1rem; }
+label { font: 0.8rem/1.5 var(--mono); color: var(--muted); display: grid; gap: 0.35rem; }
+input, textarea {
+  font: 1rem/1.5 var(--sans);
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.65rem 0.8rem;
+  width: 100%;
+}
+textarea { resize: vertical; }
+input:focus-visible, textarea:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+button {
+  justify-self: start;
+  font: 500 0.9rem/1 var(--sans);
+  color: var(--bg);
+  background: var(--ink);
+  border: 0;
+  border-radius: 999px;
+  padding: 0.8rem 1.4rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover { background: var(--accent); }
+
+/* Gentle fade-up on load */
+@media (prefers-reduced-motion: no-preference) {
+  main > * { animation: rise 0.7s cubic-bezier(.2,.7,.2,1) both; }
+  main > :nth-child(2) { animation-delay: 0.06s; }
+  main > :nth-child(3) { animation-delay: 0.12s; }
+  main > :nth-child(n+4) { animation-delay: 0.18s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+}
+
+@media (max-width: 520px) {
+  main { padding-top: 3rem; }
+  li { grid-template-columns: 1fr; gap: 0.1rem; }
+}
+</style>
 </head>
 <body>
+<main>
 
-<h1>Kyle Wettlin</h1>
-<p>Web Developer. Game Developer. Student.</p>
+<header>
+<h1>Kyle Wettlin<em>.</em></h1>
+<p class="tagline">Web Developer. Game Developer. Student.</p>
+</header>
 
+<section>
 <h2>About</h2>
 <p>Currently studying programming, game design, and cybersecurity.</p>
+</section>
 
+<section>
 <h2>Projects</h2>
 
+<article class="project">
 <h3>PureCinema</h3>
 <p>A movie database app available on the App Store.</p>
-<p><a href="https://apps.apple.com/us/app/purecinema/id6757587184">AppStore</a></p>
+<p class="meta"><a href="https://apps.apple.com/us/app/purecinema/id6757587184">App Store</a></p>
+<figure class="shot"><img src="media/purecinema.jpg" alt="PureCinema App Store listing with screenshots of the discover, watchlist, favorites, and detail screens" width="1600" height="1006" loading="lazy"></figure>
+</article>
 
+<article class="project">
 <h3>Album Collector</h3>
 <p>A local app to help keep track of your favorite albums. Search Spotify's API to find any album, add it to your collection, and rate it. Currently runs on MacOS with a web-based version in development.</p>
-<p>C++, Makefile, Spotify API. <a href="https://github.com/kylewettlin/AlbumCollector">GitHub</a></p>
+<p class="meta">C++ · Makefile · Spotify API — <a href="https://github.com/kylewettlin/AlbumCollector">GitHub</a></p>
+<figure class="shot"><img src="media/album-collector.jpg" alt="Album Collector library view listing rated albums with cover art" width="1600" height="1000" loading="lazy"></figure>
+</article>
 
+<article class="project">
 <h3>CSCE 242 Website</h3>
 <p>A constantly updated webpage showcasing work from my webpage design course.</p>
-<p>HTML, CSS, JavaScript. <a href="https://kylewettlin.github.io">Check it out</a></p>
+<p class="meta">HTML · CSS · JavaScript — <a href="https://kylewettlin.github.io">Check it out</a></p>
+<figure class="shot"><img src="media/csce242.png" alt="CSCE 242 course site showing assignment cards" width="1122" height="1051" loading="lazy"></figure>
+</article>
+</section>
 
+<section>
 <h2>Skills</h2>
 <ul>
-<li>Game Development: Unity, Godot, C#, Game Design, Level Design</li>
-<li>Web Development: HTML, CSS, JavaScript, React</li>
-<li>Design: 2D Art (Aseprite/Procreate), 3D Modeling(Blender), UI/UX</li>
+<li>Game Development <span>Unity, Godot, C#, Game Design, Level Design</span></li>
+<li>Web Development <span>HTML, CSS, JavaScript, React</span></li>
+<li>Design <span>2D Art (Aseprite/Procreate), 3D Modeling (Blender), UI/UX</span></li>
 </ul>
+</section>
 
+<section>
 <h2>Contact</h2>
 <p><a href="https://github.com/kylewettlin">GitHub</a>, <a href="https://www.linkedin.com/in/kyle-wettlin-5257742ba/">LinkedIn</a></p>
 
 <form action="https://formspree.io/f/xeooalrz" method="POST">
-<p><label>Name<br><input type="text" name="name" required></label></p>
-<p><label>Email<br><input type="email" name="email" required></label></p>
-<p><label>Message<br><textarea name="message" rows="4" cols="40" required></textarea></label></p>
-<p><button type="submit">Send</button></p>
+<label>Name<input type="text" name="name" autocomplete="name" required></label>
+<label>Email<input type="email" name="email" autocomplete="email" required></label>
+<label>Message<textarea name="message" rows="4" required></textarea></label>
+<button type="submit">Send message</button>
 </form>
+</section>
 
-<hr>
-<p><a href="_archive/index_original.html">View original portfolio</a></p>
-
+</main>
 </body>
 </html>
